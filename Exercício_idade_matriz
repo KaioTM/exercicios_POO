@@ -1,0 +1,67 @@
+package exercício_idade_matriz;
+
+public class Exercício_idade_matriz {
+
+    public static void main(String[] args) {
+        String[] nome = new String[] {"J","B","E","H","I","F","G","D","C","A"};
+        int[] idade = new int[]{2,1,10,9,6,5,7,8,4,3};
+        int i,j,aux1;
+        String aux2;
+        boolean trocou = true;
+        long antes,depois;
+        
+        //Indicador de desempenho
+        antes = System.nanoTime();
+        
+        System.out.println("Sem ordenar:");
+        for (i=0;i<=9;i++){
+            System.out.println(nome[i] + " " + idade[i]);
+       
+        }
+        do {
+            trocou = false;
+            for (j = 0; j<9;j++){
+                if(nome[j].compareToIgnoreCase(nome[j+1])>0){
+                    aux2 = nome[j];
+                    nome[j] = nome[j+1];
+                    nome[j+1] = aux2;
+                    aux1 = idade[j];
+                    idade[j] = idade[j+1];
+                    idade[j+1] = aux1;
+                    trocou = true;
+                }
+            }
+        }while (trocou);
+        System.out.println("\nOrdenado por ordem alfabética:");
+         for (i=0;i<=9;i++){
+            System.out.println(nome[i] + " " + idade[i]);
+        }  
+        trocou = true;
+     do{
+            trocou = false;
+            for (j = 0; j<9;j++){
+                if(idade[j] > idade[j+1]){
+                    aux2 = nome[j];
+                    nome[j] = nome[j+1];
+                    nome[j+1] = aux2;
+                    aux1 = idade[j];
+                    idade[j] = idade[j+1];
+                    idade[j+1] = aux1;
+                    trocou = true;
+                }
+            }
+        }  while (trocou);
+      System.out.println("\nOrdenado por ordem crescente de idade:");
+         for (i=0;i<=9;i++){
+            System.out.println(nome[i] + " " + idade[i]);
+        }  
+         
+         //Indicador de desempenho
+         depois = System.nanoTime();
+         System.out.print(depois-antes);
+    }
+    
+}
+//Comparação de Desempenho
+//Antes ordenação 1732211
+//Ordenado 1478480
